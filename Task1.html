@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<body>
+    <div id="text">Какой-то текст</div>
+    <button id="hideBtn">Скрыть текст</button>
+
+    <script>
+        var textDiv = document.getElementById('text');
+        var hideBtn = document.getElementById('hideBtn');
+
+        hideBtn.addEventListener('click', function () {
+            textDiv.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
+

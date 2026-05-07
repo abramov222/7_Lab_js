@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+    <div id="coords">Кликните в любом месте страницы</div>
+
+    <script>
+        var coordsDiv = document.getElementById('coords');
+
+        document.addEventListener('click', function (e) {
+            coordsDiv.textContent = 'Координаты клика: clientX = ' + e.clientX + ', clientY = ' + e.clientY;
+        });
+    </script>
+</body>
+</html>
+

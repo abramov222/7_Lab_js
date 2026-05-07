@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Абрамов Илья</title>
+</head>
+<body>
+    <h1>Средняя зарплата за 6 месяцев</h1>
+    <form id="salaryForm">
+        <div>
+            <label>Январь: <input type="number" id="jan" value="300"></label>
+        </div>
+        <div>
+            <label>Февраль: <input type="number" id="feb" value="200"></label>
+        </div>
+        <div>
+            <label>Март: <input type="number" id="mar" value="500"></label>
+        </div>
+        <div>
+            <label>Апрель: <input type="number" id="apr" value="250"></label>
+        </div>
+        <div>
+            <label>Май: <input type="number" id="may" value="350"></label>
+        </div>
+        <div>
+            <label>Июнь: <input type="number" id="jun" value="500"></label>
+        </div>
+        <div>
+            <label>Средняя зарплата: <input type="number" id="avg" readonly></label>
+        </div>
+        <div>
+            <button type="button" id="calcBtn">Вычислить</button>
+            <button type="reset">Обновить</button>
+        </div>
+    </form>
+
+    <script>
+        var form = document.getElementById('salaryForm');
+        var jan = document.getElementById('jan');
+        var feb = document.getElementById('feb');
+        var mar = document.getElementById('mar');
+        var apr = document.getElementById('apr');
+        var may = document.getElementById('may');
+        var jun = document.getElementById('jun');
+        var avg = document.getElementById('avg');
+        var calcBtn = document.getElementById('calcBtn');
+
+        calcBtn.addEventListener('click', function () {
+            var sum = Number(jan.value) + Number(feb.value) + Number(mar.value) + Number(apr.value) + Number(may.value) + Number(jun.value);
+            var result = sum / 6;
+            avg.value = result;
+        });
+
+        form.addEventListener('reset', function () {
+            avg.value = '';
+        });
+    </script>
+</body>
+</html>
+

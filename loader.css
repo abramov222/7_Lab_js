@@ -1,0 +1,40 @@
+.loader-box {
+    width: min(520px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e6e8ee;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+#loader-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6f8;
+}
+
+.loader-title {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #111;
+    margin-bottom: 12px;
+}
+
+.loader-bar {
+    height: 12px;
+    background: #e2e5ea;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #3b82f6;
+    border-radius: 999px;
+    transition: width 30ms linear;
+}
+

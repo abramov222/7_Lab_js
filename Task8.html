@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Task8</title>
+    <link rel="stylesheet" href="./loader.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            color: #111;
+        }
+        main {
+            display: none;
+            padding: 32px 16px;
+        }
+
+        .wrap {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .progress {
+            margin: 0 auto 18px;
+            max-width: 520px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e2e5ea;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #3b82f6;
+            border-radius: 999px;
+            transition: width 200ms linear;
+        }
+
+        .frame {
+            display: none;
+            background: #fff;
+            border: 1px solid #e6e8ee;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .frame h2 {
+            margin: 0 0 14px;
+            font-size: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 12px;
+            border: 1px solid #cfd6e3;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            background: #fff;
+        }
+
+        input:focus, select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        .btns {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+
+        button {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: #fff;
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #eef2ff;
+            border-color: #dbe3ff;
+            color: #1f3a8a;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border-color: #d5d9e3;
+            color: #111;
+        }
+
+        .inline {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .inline .row {
+            flex: 1;
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .code-row {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+            margin-top: 12px;
+        }
+
+        .code-row input {
+            max-width: 180px;
+        }
+
+        .card-number {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .card-number input {
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .small-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .final {
+            text-align: center;
+            padding: 40px 12px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <section id="loader-section">
+        <div class="loader-box">
+            <div class="loader-title">Загрузка...</div>
+            <div class="loader-bar">
+                <div class="loader-bar-fill" id="loader-fill"></div>
+            </div>
+        </div>
+    </section>
+
+    <main id="main">
+        <div class="wrap">
+            <div class="progress" id="progressBlock">
+                <div class="progress-text" id="progressText">Этап регистрации</div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <section id="frame_1" class="frame">
+                <h2>Персональные данные</h2>
+                <div class="grid">
+                    <div class="row">
+                        <label for="firstName">Имя</label>
+                        <input type="text" id="firstName">
+                    </div>
+                    <div class="row">
+                        <label for="lastName">Фамилия</label>
+                        <input type="text" id="lastName">
+                    </div>
+                    <div class="row full">
+                        <label for="email">Email</label>
+                        <input type="email" id="email">
+                    </div>
+                    <div class="row">
+                        <label for="pass1">Пароль</label>
+                        <input type="password" id="pass1">
+                    </div>
+                    <div class="row">
+                        <label for="pass2">Повторите пароль</label>
+                        <input type="password" id="pass2">
+                    </div>
+                    <div class="row full">
+                        <label for="country">Страна</label>
+                        <select id="country">
+                            <option value="">Выберите страну</option>
+                            <option value="ru">Россия</option>
+                            <option value="kz">Казахстан</option>
+                            <option value="kg">Кыргызстан</option>
+                            <option value="uz">Узбекистан</option>
+                            <option value="by">Беларусь</option>
+                            <option value="am">Армения</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button type="button" class="btn-ghost" id="cancel1">Отмена</button>
+                    <button type="button" class="btn-primary" id="next1" disabled>Далее</button>
+                </div>
+            </section>
+
+            <section id="frame_2" class="frame">
+                <h2>Телефонный номер</h2>
+                <div class="inline">
+                    <div class="row">
+                        <label for="phone">Номер телефона</label>
+                        <input type="tel" id="phone" placeholder="+7">
+                    </div>
+                    <button type="button" class="btn-secondary" id="sendCode">Отправить</button>
+                </div>
+
+                <div id="codeBlock" class="hidden">
+                    <div class="code-row">
+                        <div class="row">
+                            <label for="code">Код подтверждения</label>
+                            <input type="text" id="code" maxlength="4" inputmode="numeric">
+                        </div>
+                        <button type="button" class="btn-secondary" id="checkCode">Проверить</button>
+                    </div>
+                    <div class="hint">Введите любые 4 цифры</div>
+                </div>
+
+                <div class="btns">
+                    <button type="button" class="btn-ghost" id="back2">Назад</button>
+                    <button type="button" class="btn-primary" id="next2" disabled>Далее</button>
+                </div>
+            </section>
+
+            <section id="frame_3" class="frame">
+                <h2>Метод оплаты</h2>
+                <div class="row">
+                    <label>Номер карты</label>
+                    <div class="card-number">
+                        <input type="text" id="card1" maxlength="4" inputmode="numeric">
+                        <input type="text" id="card2" maxlength="4" inputmode="numeric">
+                        <input type="text" id="card3" maxlength="4" inputmode="numeric">
+                        <input type="text" id="card4" maxlength="4" inputmode="numeric">
+                    </div>
+                </div>
+
+                <div class="small-grid">
+                    <div class="row">
+                        <label for="exp">Срок действия (MM/YY)</label>
+                        <input type="text" id="exp" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="row">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" maxlength="3" inputmode="numeric">
+                    </div>
+                </div>
+
+                <div class="btns">
+                    <button type="button" class="btn-ghost" id="back3">Назад</button>
+                    <button type="button" class="btn-primary" id="finish">Завершить</button>
+                </div>
+            </section>
+
+            <section id="frame_4" class="frame">
+                <div class="final">Регистрация успешно завершена!</div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        var main = document.getElementById('main');
+        var progressText = document.getElementById('progressText');
+        var progressFill = document.getElementById('progressFill');
+        var progressBlock = document.getElementById('progressBlock');
+
+        var f1 = document.getElementById('frame_1');
+        var f2 = document.getElementById('frame_2');
+        var f3 = document.getElementById('frame_3');
+        var f4 = document.getElementById('frame_4');
+
+        var firstName = document.getElementById('firstName');
+        var lastName = document.getElementById('lastName');
+        var email = document.getElementById('email');
+        var pass1 = document.getElementById('pass1');
+        var pass2 = document.getElementById('pass2');
+        var country = document.getElementById('country');
+        var next1 = document.getElementById('next1');
+        var cancel1 = document.getElementById('cancel1');
+
+        var phone = document.getElementById('phone');
+        var sendCode = document.getElementById('sendCode');
+        var codeBlock = document.getElementById('codeBlock');
+        var code = document.getElementById('code');
+        var checkCode = document.getElementById('checkCode');
+        var next2 = document.getElementById('next2');
+        var back2 = document.getElementById('back2');
+
+        var card1 = document.getElementById('card1');
+        var card2 = document.getElementById('card2');
+        var card3 = document.getElementById('card3');
+        var card4 = document.getElementById('card4');
+        var exp = document.getElementById('exp');
+        var cvv = document.getElementById('cvv');
+        var back3 = document.getElementById('back3');
+        var finish = document.getElementById('finish');
+
+        var step2Verified = false;
+
+        function showFrame(n) {
+            f1.style.display = 'none';
+            f2.style.display = 'none';
+            f3.style.display = 'none';
+            f4.style.display = 'none';
+
+            if (n === 1) {
+                f1.style.display = 'block';
+                progressBlock.style.display = 'block';
+                progressText.textContent = 'Шаг 1';
+                progressFill.style.width = '0%';
+            }
+            if (n === 2) {
+                f2.style.display = 'block';
+                progressBlock.style.display = 'block';
+                progressText.textContent = 'Шаг 2';
+                progressFill.style.width = '33%';
+                next2.disabled = !step2Verified;
+            }
+            if (n === 3) {
+                f3.style.display = 'block';
+                progressBlock.style.display = 'block';
+                progressText.textContent = 'Шаг 3';
+                progressFill.style.width = '66%';
+            }
+            if (n === 4) {
+                f4.style.display = 'block';
+                progressBlock.style.display = 'block';
+                progressText.textContent = 'Готово';
+                progressFill.style.width = '100%';
+            }
+        }
+
+        function onlyDigits(el, maxLen) {
+            var v = el.value;
+            v = v.replace(/\D/g, '');
+            if (maxLen) v = v.slice(0, maxLen);
+            el.value = v;
+        }
+
+        function updateStep1Button() {
+            var ok = true;
+            if (firstName.value.trim() === '') ok = false;
+            if (lastName.value.trim() === '') ok = false;
+            if (email.value.trim() === '') ok = false;
+            if (pass1.value.trim() === '') ok = false;
+            if (pass2.value.trim() === '') ok = false;
+            if (country.value === '') ok = false;
+            if (pass1.value !== pass2.value) ok = false;
+            next1.disabled = !ok;
+        }
+
+        firstName.addEventListener('input', updateStep1Button);
+        lastName.addEventListener('input', updateStep1Button);
+        email.addEventListener('input', updateStep1Button);
+        pass1.addEventListener('input', updateStep1Button);
+        pass2.addEventListener('input', updateStep1Button);
+        country.addEventListener('input', updateStep1Button);
+
+        cancel1.addEventListener('click', function () {
+            firstName.value = '';
+            lastName.value = '';
+            email.value = '';
+            pass1.value = '';
+            pass2.value = '';
+            country.value = '';
+            next1.disabled = true;
+        });
+
+        next1.addEventListener('click', function () {
+            showFrame(2);
+        });
+
+        back2.addEventListener('click', function () {
+            showFrame(1);
+        });
+
+        sendCode.addEventListener('click', function () {
+            codeBlock.classList.remove('hidden');
+            step2Verified = false;
+            next2.disabled = true;
+            code.value = '';
+        });
+
+        code.addEventListener('input', function () {
+            onlyDigits(code, 4);
+        });
+
+        checkCode.addEventListener('click', function () {
+            onlyDigits(code, 4);
+            if (code.value.length === 4) {
+                step2Verified = true;
+                next2.disabled = false;
+            }
+        });
+
+        next2.addEventListener('click', function () {
+            showFrame(3);
+        });
+
+        function cardAutoNext(current, next) {
+            current.addEventListener('input', function () {
+                onlyDigits(current, 4);
+                if (current.value.length === 4 && next) next.focus();
+            });
+        }
+
+        cardAutoNext(card1, card2);
+        cardAutoNext(card2, card3);
+        cardAutoNext(card3, card4);
+        cardAutoNext(card4, null);
+
+        exp.addEventListener('input', function () {
+            var v = exp.value.replace(/[^0-9]/g, '').slice(0, 4);
+            if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+            exp.value = v;
+        });
+
+        cvv.addEventListener('input', function () {
+            onlyDigits(cvv, 3);
+        });
+
+        back3.addEventListener('click', function () {
+            showFrame(2);
+        });
+
+        finish.addEventListener('click', function () {
+            showFrame(4);
+        });
+
+        window.addEventListener('registration-start', function () {
+            main.style.display = 'block';
+            showFrame(1);
+            updateStep1Button();
+        });
+    </script>
+    <script src="./loader.js"></script>
+</body>
+</html>
